@@ -6,4 +6,5 @@
 #deavtivate
 #pip install django
 #django-admi
+#cd .\stocktracker\
 #python manage.py runserver
