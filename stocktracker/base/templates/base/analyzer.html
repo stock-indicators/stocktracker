@@ -2,7 +2,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
 {% block content %}
 
-    <div class="container mt-5 pt-5 col-md-5">
+<h4>{{stock.name}}</h4>
+
+<!-- TO TURN ON LATER! WHEN ADDING SEARCH FUNCTION -->
+    <!-- <div class="container mt-5 pt-5 col-md-5">
 
         <div id="autocomplete" class="autocomplete">
             <input class="autocomplete-input" />
@@ -44,10 +47,9 @@
             },
             getResultValue: result => result,
             onSubmit: result => {
-                // window.open(`/places/?=${(result)}`)
-                window.open(``)
+                window.open(`/analyzer/?=${(result)}`)
             }
         })
-    </script>
+    </script> -->
 
 {% endblock %}
