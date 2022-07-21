@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.core.cache import cache
 from .models import *
-
+from .forms import AssetsForm
 
 def home(request):
     stocks = Assets.objects.all()
@@ -19,6 +19,16 @@ def analyzer(request, pk):
     return render(request, 'base/analyzer.html', contex)
 
 
+def createAsset(request):
+    form = AssetsForm()
+    
+    if request.method == 'POST':
+        form = AssetsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'base/analyzer_form.html', context)
 
 
 
