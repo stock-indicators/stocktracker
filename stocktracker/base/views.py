@@ -30,6 +30,24 @@ def createAsset(request):
     context = {'form': form}
     return render(request, 'base/analyzer_form.html', context)
 
+def updateAsset(request, pk):
+    assets = Assets.objects.get(id=pk)
+    form = AssetsForm(instance=assets)
+    if request.method == 'POST':
+        form = AssetsForm(request.POST, instance=assets) 
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'base/analyzer_form.html', context)
+
+def deleteAsset(request, pk):
+    assets = Assets.objects.get(id=pk)
+    if request.method == 'POST':
+        assets.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':assets})
+
 
 
 # TO COMEBACK LATER WHEN ADDING SEARCH FUNCTION

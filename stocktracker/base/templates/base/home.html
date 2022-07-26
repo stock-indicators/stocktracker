@@ -10,7 +10,8 @@
 <div>
     <div>
         {% for stock in stocks %}
-        
+        <a href="{% url 'update-asset' stock.id %}">Edit</a>
+        <a href="{% url 'delete-asset' stock.id %}">Delete</a>
         <div>
             <h2>{{stock.id}} -- <a href="{% url 'analyzer' stock.id %}">{{stock.name}}</a></h2>
         </div>
