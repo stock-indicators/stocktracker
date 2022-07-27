@@ -5,8 +5,14 @@ from .models import *
 from .forms import AssetsForm
 
 def home(request):
-    stocks = Assets.objects.all()
-    contex = {'stocks': stocks}
+
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    
+    search_stocks = Assets.objects.filter(name__icontains=q)
+
+    stocks = Assets.objects.filter()
+    contex = {'stocks': stocks, 'search_stocks': search_stocks}
     return render(request, 'base/home.html', contex)
 
 
